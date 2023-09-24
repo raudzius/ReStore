@@ -1,17 +1,22 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar, Switch, Toolbar, Typography,
+} from '@mui/material';
 import React from 'react';
 
-const Header: React.FC = () => {
-  console.log('');
-  return (
-    <AppBar position="static" sx={{ marginBottom: 4 }}>
-      <Toolbar>
-        <Typography variant="h6" textTransform="uppercase">
-          Re-Store
-        </Typography>
-      </Toolbar>
-    </AppBar>
-  );
+type Props = {
+  darkMode: boolean;
+  handleThemeChange: () => void;
 };
+
+const Header: React.FC<Props> = ({ darkMode, handleThemeChange }) => (
+  <AppBar position="static" sx={{ marginBottom: 4 }}>
+    <Toolbar>
+      <Typography variant="h6" textTransform="uppercase">
+        Re-Store
+      </Typography>
+      <Switch checked={darkMode} onChange={handleThemeChange} />
+    </Toolbar>
+  </AppBar>
+);
 
 export default Header;
